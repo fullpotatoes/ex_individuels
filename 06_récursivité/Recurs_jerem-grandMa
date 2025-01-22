@@ -1,0 +1,31 @@
+const familyTree = {
+  icon: ":grand_mère:",
+  children: [
+    {
+      icon: ":homme:",
+      children: [],
+    },
+    {
+      icon: ":femme_rousse:",
+      children: [{ icon: ":enfant:" }, { icon: ":bébé:" }],
+    },
+  ],
+};
+`
+:grand_mère: a 2 enfants
+:homme: a 0 enfants
+:femme_rousse: a 2 enfants
+:enfant: a 0 enfants
+:bébé: a 0 enfants
+`
+
+const traverseTree = (person) => {
+  if (person.children === undefined) {
+    return;
+  }
+  console.log(`${person.label} a ${person.children.length} enfants`);
+  for (const child of person.children) {
+    traverseTree(child);
+  }
+};
+traverseTree(familyTree);
